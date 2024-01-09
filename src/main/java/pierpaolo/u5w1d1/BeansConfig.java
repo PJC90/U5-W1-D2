@@ -3,10 +3,7 @@ package pierpaolo.u5w1d1;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
-import pierpaolo.u5w1d1.entities.Bevanda;
-import pierpaolo.u5w1d1.entities.Menu;
-import pierpaolo.u5w1d1.entities.Pizza;
-import pierpaolo.u5w1d1.entities.Topping;
+import pierpaolo.u5w1d1.entities.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,4 +62,8 @@ public class BeansConfig {
 
         return new Menu(pizzaList, bevandaList, toppingList);
     }
+    @Bean("tavolo_1")
+    public Tavolo getTavolo1(){return new Tavolo(1,5,TavoloStato.LIBERO);}
+    @Bean("tavolo_2")
+    public Tavolo getTavolo2(){return new Tavolo(2,4,TavoloStato.LIBERO);}
 }
