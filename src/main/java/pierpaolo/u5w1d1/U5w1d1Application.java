@@ -12,22 +12,7 @@ import java.util.List;
 public class U5w1d1Application {
 
 	public static void main(String[] args) {
-
 		SpringApplication.run(U5w1d1Application.class, args);
-		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(U5w1d1Application.class);
-
-		Menu m = (Menu) ctx.getBean("menu");
-		m.printMenu();
-
-		Tavolo tavolo1 = (Tavolo) ctx.getBean("tavolo_1");
-
-		List<Prodotto> prodottiOrdinati = new ArrayList<>();
-		prodottiOrdinati.add(ctx.getBean("vikinga", Pizza.class));
-		prodottiOrdinati.add(ctx.getBean("coca",Bevanda.class));
-
-		Ordine ordine1 = new Ordine(4, prodottiOrdinati, tavolo1);
-
-		ctx.close();
 	}
 
 }

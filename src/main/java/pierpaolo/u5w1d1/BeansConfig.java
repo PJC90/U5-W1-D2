@@ -1,7 +1,10 @@
 package pierpaolo.u5w1d1;
 
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.Scope;
 import pierpaolo.u5w1d1.entities.*;
 
@@ -9,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
+@PropertySource("application.properties")
 public class BeansConfig {
     @Bean
     public Topping pomodoro(){return new Topping(0.99, 100,"Pomodoro");}
@@ -63,7 +67,8 @@ public class BeansConfig {
         return new Menu(pizzaList, bevandaList, toppingList);
     }
     @Bean("tavolo_1")
-    public Tavolo getTavolo1(){return new Tavolo(1,5,TavoloStato.LIBERO);}
+    public Tavolo getTavolo1(@Value("${costo.coperto}") double costoCoperto){return new Tavolo(1,5,TavoloStato.LIBERO, costoCoperto);}
+    //Quando usi @Value non dimenticarti  ------->  @PropertySource("application.properties")
     @Bean("tavolo_2")
-    public Tavolo getTavolo2(){return new Tavolo(2,4,TavoloStato.LIBERO);}
+    public Tavolo getTavolo2(@Value("${costo.coperto}")double costoCoperto){return new Tavolo(2,4,TavoloStato.LIBERO, costoCoperto);}
 }
